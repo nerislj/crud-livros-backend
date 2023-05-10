@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.neri.crudlivros.services.DBService;
+import com.neri.crudlivros.service.DBService;
 
 @Configuration
 @Profile("dev")

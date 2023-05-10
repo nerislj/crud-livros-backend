@@ -1,4 +1,4 @@
-package com.neri.crudlivros.services;
+package com.neri.crudlivros.service;
 
 import java.util.Arrays;
 
