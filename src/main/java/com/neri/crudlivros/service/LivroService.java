@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.neri.crudlivros.domain.Categoria;
 import com.neri.crudlivros.domain.Livro;
 import com.neri.crudlivros.repositories.LivroRepository;
 import com.neri.crudlivros.service.exceptions.ObjectNotFoundException;
@@ -29,6 +30,31 @@ public class LivroService {
 		categoriaService.findById(id_cat);
 		return repository.findAllByCategoria(id_cat);
 
+	}
+
+	public Livro update(Integer id, Livro obj) {
+		Livro newObj = findById(id);
+		updateDate(newObj, obj);
+		return repository.save(newObj);
+	}
+
+	private void updateDate(Livro newObj, Livro obj) {
+		newObj.setTitulo(obj.getTitulo());
+		newObj.setNomeAutor(obj.getNomeAutor());
+		newObj.setTexto(obj.getTexto());
+	}
+
+	public Livro create(Integer id_cat, Livro obj) {
+		obj.setId(null);
+		Categoria cat = categoriaService.findById(id_cat);
+		obj.setCategoria(cat);
+		return repository.save(obj);
+	}
+
+	public void delete(Integer id) {
+		Livro obj = findById(id);
+		repository.delete(obj);
+		
 	}
 
 }

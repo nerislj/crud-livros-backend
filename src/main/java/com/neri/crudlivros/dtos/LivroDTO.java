@@ -2,13 +2,20 @@ package com.neri.crudlivros.dtos;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.neri.crudlivros.domain.Livro;
+
+import jakarta.validation.constraints.NotEmpty;
 
 public class LivroDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
+	
+	@NotEmpty(message = "Campo TITULO é requerido")
+	@Length(min = 3,max = 50, message = "O campo TITULO deve ter entre 3 e 50 caracteres")
 	private String titulo;
 	
 	public LivroDTO() {
